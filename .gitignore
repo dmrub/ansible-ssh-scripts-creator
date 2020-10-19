@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Generated files
+/run-rsync.sh
+/run-ssh.sh
+/run-scp.sh
+/run-sftp.sh
+/ssh-config

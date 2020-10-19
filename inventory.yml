@@ -1,0 +1,17 @@
+---
+all:
+  children:
+    my_group:
+      hosts:
+        my_host_1:
+          ansible_ssh_common_args: '{{ hostvars[node_ref].ansible_ssh_common_args | default(omit) }}'
+        my_host_2:
+          ansible_ssh_common_args: >-
+            -o ProxyCommand='ssh -o UserKnownHostsFile=/dev/null
+            -o StrictHostKeyChecking=no -W %h:%p user@example.org -p 2222
+            -i my_id_rsa '
+      vars:
+        node_ref: my_host_2
+        ansible_user: my_user
+        ansible_ssh_private_key_file: my_id_rsa
+
